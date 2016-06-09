@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">PopularMovie</string>
+    <string name="app_name">Popular Movie</string>
+    <string name="movie_detail">Movie Detail</string>
+
+    <!-- Preferences -->
+    <string name="pref_sort_order_popular">popular</string>
+    <string name="pref_sort_order_rate">top_rate</string>
+    <string name="pref_sort_label">Sort Order</string>
+    <string name="pref_sort_label_popular">Popular</string>
+    <string name="pref_sort_label_rate">Top Rate</string>
+    <string name="pref_sort_key">sort_order</string>
+    <string name="pref_sort_order_default">@string/pref_sort_order_popular</string>
+
+    <!-- Menu Actions -->
+    <string name="action_settings">Settings</string>
+
+    <!-- Transition -->
+    <string name="movie_poster_transition">poster</string>
 </resources>

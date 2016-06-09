@@ -1,3 +1,8 @@
-/build
-/.gradle
-/.idea
+*.iml
+app/bin/
+tmp/
+.gradle/
+.idea/
+build/
+app/build/
+local.properties

@@ -3,6 +3,8 @@ package com.chefmic.movie.app.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 /**
@@ -10,19 +12,27 @@ import java.util.ArrayList;
  */
 public class Movie implements Parcelable {
 
+    @SerializedName("poster_path")
     private final String posterPath;
     private final Boolean adult;
     private final String overview;
+    @SerializedName("release_date")
     private final String releaseDate;
+    @SerializedName("genreIds")
     private final ArrayList<Integer> genreIds;
     private final Long id;
+    @SerializedName("original_title")
     private final String originalTitle;
+    @SerializedName("original_language")
     private final String originalLanguage;
     private final String title;
+    @SerializedName("backdrop_path")
     private final String backdropPath;
     private final Double popularity;
+    @SerializedName("vote_count")
     private final Integer voteCount;
     private final Boolean video;
+    @SerializedName("vote_average")
     private final Double voteAverage;
 
     public Movie(String posterPath, Boolean adult, String overview, String releaseDate, ArrayList<Integer> genreIds,

@@ -3,6 +3,8 @@ package com.chefmic.movie.app.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 /**
@@ -12,7 +14,9 @@ public class MovieResult implements Parcelable {
 
     private final Integer page;
     private final ArrayList<Movie> results;
+    @SerializedName("total_results")
     private final Integer totalResults;
+    @SerializedName("total_pages")
     private final Integer totalPages;
 
     public MovieResult(Integer page, ArrayList<Movie> results, Integer totalResults, Integer totalPages) {

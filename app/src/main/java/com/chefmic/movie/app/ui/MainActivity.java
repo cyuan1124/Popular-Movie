@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             currentOrder = sortOrder;
             Fragment fragment = getSupportFragmentManager().findFragmentByTag(MOVIES_FRAGMENT_TAG);
             if (fragment != null) {
-                ((MoviesFragment) fragment).loadMovies(currentOrder.equals(getString(R.string.pref_sort_order_default)));
+                ((MoviesFragment) fragment).loadMovies(sortOrder);
             }
         }
     }

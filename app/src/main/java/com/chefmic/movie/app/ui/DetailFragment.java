@@ -20,31 +20,40 @@ import com.squareup.picasso.Picasso;
 
 import java.util.Locale;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by chenyuan on 6/7/16.
  */
 public class DetailFragment extends Fragment {
+
+    @BindView(R.id.movie_title) TextView title;
+    @BindView(R.id.vote_count) TextView voteCount;
+    @BindView(R.id.ratings) TextView ratings;
+    @BindView(R.id.movie_overview) TextView movieOverview;
+    @BindView(R.id.movie_backdrop_image) ImageView backdropImageView;
+    @BindView(R.id.movie_poster) ImageView moviePoster;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Movie movie = getActivity().getIntent().getParcelableExtra(Constant.Extras.Movie.name());
         View view = inflater.inflate(R.layout.fragment_detail, container, false);
-        ((TextView) view.findViewById(R.id.movie_title)).setText(String.format("%s(%s)", movie.getTitle(), movie.getReleaseDate().substring(0, 4)));
-        ((TextView) view.findViewById(R.id.vote_count)).setText(getResources().getQuantityString(R.plurals.vote, movie.getVoteCount(), movie.getVoteCount()));
-        ((TextView) view.findViewById(R.id.ratings)).setText(String.format(Locale.getDefault(), "%.1f/10", movie.getVoteAverage()));
-        ((TextView) view.findViewById(R.id.movie_overview)).setText(movie.getOverview());
-        final ImageView backdropImage = (ImageView) view.findViewById(R.id.movie_backdrop_image);
-        backdropImage.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+        ButterKnife.bind(this, view);
+        title.setText(String.format("%s(%s)", movie.getTitle(), movie.getReleaseDate().substring(0, 4)));
+        voteCount.setText(getResources().getQuantityString(R.plurals.vote, movie.getVoteCount(), movie.getVoteCount()));
+        ratings.setText(String.format(Locale.getDefault(), "%.1f/10", movie.getVoteAverage()));
+        movieOverview.setText(movie.getOverview());
+        backdropImageView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                backdropImage.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-                backdropImage.getLayoutParams().height = (int)(0.56f * backdropImage.getWidth());
+                backdropImageView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                backdropImageView.getLayoutParams().height = (int)(0.56f * backdropImageView.getWidth());
             }
         });
-        Picasso.with(getActivity()).load(Constant.IMG_BASE_URI + movie.getPosterPath()).into((ImageView) view.findViewById(R.id.movie_poster));
-        Picasso.with(getActivity()).load(Constant.BACKDROP_IMG_BASE_URI + movie.getBackdropPath()).into((ImageView) view.findViewById(R.id.movie_backdrop_image));
-    Log.i("MovieImage", "" + Constant.BACKDROP_IMG_BASE_URI + movie.getBackdropPath());
+        Picasso.with(getActivity()).load(Constant.IMG_BASE_URI + movie.getPosterPath()).into(moviePoster);
+        Picasso.with(getActivity()).load(Constant.BACKDROP_IMG_BASE_URI + movie.getBackdropPath()).into(backdropImageView);
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);

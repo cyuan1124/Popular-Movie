@@ -51,12 +51,6 @@ public class MoviesFragment extends Fragment implements LoaderManager.LoaderCall
     private static final int INIT_FAV_LIST_LOADER_ID = 0;
 
     private static final String[] MOVIE_COLUMNS = {
-            // In this case the id needs to be fully qualified with a table name, since
-            // the content provider joins the location & weather tables in the background
-            // (both have an _id column)
-            // On the one hand, that's annoying.  On the other, you can search the weather table
-            // using the location set by the user, which is only in the Location table.
-            // So the convenience is worth it.
             MovieContract.MovieEntry._ID,
             MovieContract.MovieEntry.COLUMN_ID,
             MovieContract.MovieEntry.COLUMN_MOVIE_POSTER_PATH,

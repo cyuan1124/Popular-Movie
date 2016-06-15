@@ -22,21 +22,18 @@
         <activity
             android:name=".ui.DetailActivity"
             android:parentActivityName=".ui.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.chefmic.movie.app.ui.MainActivity" />
 
         </activity>
-        <activity
-            android:name=".ui.SettingsActivity"
-            android:label="@string/action_settings"
-            android:parentActivityName=".ui.MainActivity">
 
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.chefmic.movie.app.ui.MainActivity" />
-        </activity>
+        <provider
+            android:name=".data.FavouriteMovieProvider"
+            android:authorities="com.chefmic.movie.app"
+            android:exported="false"
+            android:syncable="true" />
     </application>
 
 </manifest>

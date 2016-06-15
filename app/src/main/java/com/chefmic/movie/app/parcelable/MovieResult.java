@@ -1,4 +1,4 @@
-package com.chefmic.movie.app.data;
+package com.chefmic.movie.app.parcelable;
 
 import android.os.Parcel;
 import android.os.Parcelable;

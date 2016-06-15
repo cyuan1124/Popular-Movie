@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -30,16 +29,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                android:contentDescription="@null"
                 android:background="@color/colorPrimary"
-                android:minHeight="?attr/actionBarSize" />
+                android:contentDescription="@null"
+                android:minHeight="?attr/actionBarSize"
+                android:scaleType="fitXY" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
+                app:navigationIcon="?homeAsUpIndicator"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
@@ -97,6 +97,16 @@
                         android:layout_height="wrap_content"
                         android:textSize="14sp"
                         tools:text="40 votes" />
+
+                    <ToggleButton
+                        android:id="@+id/add_fav_toggle"
+                        style="?android:attr/borderlessButtonStyle"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/fav_movie_toggle_selector"
+                        android:checked="false"
+                        android:textOff=""
+                        android:textOn="" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -109,13 +119,21 @@
                 android:textSize="14sp"
                 tools:text="Knowledge nay estimable questions repulsive daughters boy. Solicitude gay way unaffected expression for. His mistress ladyship required off horrible disposed rejoiced. " />
 
-            <View
+            <ViewStub
+                android:id="@+id/trailer_container_view_stub"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:alpha="0.88"
-                android:background="@android:color/black" />
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:inflatedId="@+id/trailer_container"
+                android:layout="@layout/trailers_container" />
+
+            <ViewStub
+                android:id="@+id/review_container_view_stub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:inflatedId="@+id/review_container"
+                android:layout="@layout/reviews_container" />
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

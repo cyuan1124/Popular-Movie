@@ -9,6 +9,9 @@ public class Constant {
     public static final String IMG_BASE_URI = "http://image.tmdb.org/t/p/w185";
     public static final String BACKDROP_IMG_BASE_URI = "http://image.tmdb.org/t/p/w500";
 
+    //http://img.youtube.com/vi/7d_jQycdQGo/0.jpg
+    public static final String YOUTUBE_THUMBNAIL_URI = "http://img.youtube.com/vi/%s/0.jpg";
+
     public enum Extras {
         Movie, MovieResult
     }

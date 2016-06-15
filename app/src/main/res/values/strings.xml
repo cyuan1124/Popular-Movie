@@ -8,6 +8,7 @@
     <string name="pref_sort_label">Sort Order</string>
     <string name="pref_sort_label_popular">Popular</string>
     <string name="pref_sort_label_rate">Top Rate</string>
+    <string name="pref_sort_label_favourite">My Favourite</string>
     <string name="pref_sort_key">sort_order</string>
     <string name="pref_sort_order_favourite">favourite</string>
     <string name="pref_sort_order_default">@string/pref_sort_order_popular</string>

@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements MoviesFragment.Ca
                     .add(R.id.container, new MoviesFragment(), MOVIES_FRAGMENT_TAG)
                     .commit();
         }
+        refreshActionBarTitle();
     }
 
     @Override
@@ -89,6 +91,7 @@ public class MainActivity extends AppCompatActivity implements MoviesFragment.Ca
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
         editor.putString(getString(R.string.pref_sort_key), sortOrder);
         editor.apply();
+        refreshActionBarTitle();
         Fragment fragment = getSupportFragmentManager().findFragmentByTag(MOVIES_FRAGMENT_TAG);
         if (fragment != null) {
             ((MoviesFragment) fragment).loadMovies();
@@ -102,5 +105,19 @@ public class MainActivity extends AppCompatActivity implements MoviesFragment.Ca
                 ((MoviesFragment) fragment).refreshFavList();
             }
         }
+    }
+
+    private void refreshActionBarTitle() {
+        ActionBar actionBar = getSupportActionBar();
+        String sortOrder = Utils.getSortOrder(this);
+        int titleResId;
+        if (sortOrder.equals(getString(R.string.pref_sort_order_popular))) {
+            titleResId = R.string.pref_sort_label_popular;
+        } else if (sortOrder.equals(getString(R.string.pref_sort_order_rate))) {
+            titleResId = R.string.pref_sort_label_rate;
+        } else {
+            titleResId = R.string.pref_sort_label_favourite;
+        }
+        actionBar.setTitle(titleResId);
     }
 }

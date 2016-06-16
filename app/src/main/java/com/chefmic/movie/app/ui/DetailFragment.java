@@ -211,12 +211,16 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
         movieValues.put(MovieContract.MovieEntry.COLUMN_VOTE_AVERAGE, movie.getVoteAverage());
         movieValues.put(MovieContract.MovieEntry.COLUMN_BACKDROP_PATH, movie.getBackdropPath());
         getContext().getContentResolver().insert(MovieContract.MovieEntry.CONTENT_URI, movieValues);
-        ((MainActivity) getActivity()).reloadData();
+        if (getActivity() instanceof MainActivity) {
+            ((MainActivity) getActivity()).reloadData();
+        }
     }
 
     private void removeFromFav() {
         getContext().getContentResolver().delete(MovieContract.MovieEntry.buildMovieUri(movie.getId()), null, null);
-        ((MainActivity) getActivity()).reloadData();
+        if (getActivity() instanceof MainActivity) {
+            ((MainActivity) getActivity()).reloadData();
+        }
     }
 
     @Override
